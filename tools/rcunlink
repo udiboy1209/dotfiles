@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while read line
+do
+    IFS=" : " read src dest <<< $line
+
+    dest="$HOME/$dest"
+    src="$(pwd)/$src"
+    echo "Checking $dest"
+    if [ -h "$dest" ] && [ "$(readlink $dest)" == "$src" ]
+    then
+        rm -v "$dest"
+    else
+        echo "Not a symlink to $src, not touching!"
+    fi
+done <$@

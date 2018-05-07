@@ -1,0 +1,11 @@
+#!/bin/bash
+
+slstatus &
+compton &
+redshift -l 19.076:72.877 &
+
+~/.fehbg &
+amixer set Master 60% on
+amixer set Headphone 100% on
+amixer set Speaker 100% off
+

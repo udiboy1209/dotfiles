@@ -1,0 +1,3 @@
+wm/i3.conf : .config/i3/config
+wm/polybar.conf : .config/polybar/config
+wm/launch-polybar.sh : .config/polybar/launch.sh

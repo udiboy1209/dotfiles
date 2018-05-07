@@ -1,0 +1,3 @@
+xconf/compton.conf : .config/compton.conf
+xconf/Xresources : .Xresources
+xconf/xprofile : .xprofile

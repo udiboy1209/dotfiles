@@ -1,0 +1,30 @@
+# Color-scheme : Relic Dark
+# Author       : stark <stark@openmailbox.org>
+
+color:
+    background:         "#1D2426"
+    foreground:         "#8FA388"
+
+# Alternate foreground
+#*foreground: "#AB9C71"
+
+    cursor:             "#BE5E1E"
+
+    black:            "#39474A"
+    red:              "#986345"
+    green:            "#788249"
+    yellow:           "#9B6A46"
+    blue:             "#3E5951"
+    magenta:          "#B9924A"
+    cyan:             "#5d796a"
+    white:            "#977D5E"
+    grey:             "#4C5F63"
+    light_red:        "#B07350"
+    light_green:     "#869151"
+    light_yellow:    "#AF6B42"
+    light_blue:      "#567A6E"
+    light_magenta:   "#D69D55"
+    light_cyan:      "#668574"
+    light_grey:      "#AB9C71"
+
+# vim: ft=xdefaults

@@ -1,0 +1,78 @@
+"" Vimrc by udiboy
+set nocompatible " be iMproved
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" vim-airline
+Plugin 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set noshowmode
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let mapleader=","
+
+" File options
+syntax on
+set nobackup
+set writebackup
+set backupdir=~/.cache/vim
+set encoding=utf-8
+
+" Cmd options
+set wildmenu
+set showcmd
+
+" Display options
+set hlsearch
+set cmdheight=1
+set laststatus=2
+
+" Editor options
+set autoindent
+set nostartofline
+set confirm
+
+set backspace=indent,eol,start
+
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" Window options
+set splitbelow
+set splitright
+
+" Mappings
+
+map Y y$h
+map <Leader><CR> :nohl<CR>
+imap <Leader>c <C-P>
+map <Leader>b :NERDTreeToggle<CR>
+
+noremap! <Leader><Leader> <Esc>
+noremap <Leader> <Esc>
+
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Buffer switching
+nnoremap <M-k> :bprev<CR>
+nnoremap <M-j> :bnext<CR>

@@ -1,0 +1,37 @@
+# GetFresh theme
+#
+color:
+    foreground:         "#DDCCBB"
+    cursor:             "#CCEEBB"
+
+# Brown BG
+#*background: "#30251D"
+
+# Grey BG
+    background:         "#151515"
+
+
+#black
+    black:               "#393939"
+    grey:                "#AF875F"
+#red
+    red:                 "#BF1E2D"
+    light_red:           "#E7212A"
+#green
+    green:               "#9DBA3A"
+    light_green:        "#A9C938"
+#yellow
+    yellow:              "#F5B915"
+    light_yellow:       "#F7D325"
+#blue
+    blue:                "#1CA1DB"
+    light_blue:         "#00AFDA"
+#magenta
+    magenta:             "#652F90"
+    light_magenta:      "#894E9F"
+#cyan
+    cyan:                "#EA7D24"
+    light_cyan:         "#F79321"
+#white
+    white:               "#E7E8E9"
+    light_grey:         "#F3F3F4"

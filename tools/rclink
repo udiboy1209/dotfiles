@@ -1,0 +1,22 @@
+#!/bin/bash
+
+while read line
+do
+    IFS=" : " read src dest <<< $line
+
+    dest="$HOME/$dest"
+    src="$(pwd)/$src"
+    echo "Checking $dest"
+    if [ -e "$dest" ]
+    then
+        [[ -h "$dest" ]] && \
+            echo "Link already set, need to unlink first" || \
+            echo "File already exists, can't create symlink"
+    elif [ -f "$src" ]
+    then
+        mkdir -p $(dirname "$dest")
+        ln -sv "$src" "$dest"
+    else
+        echo "File $src doesn't exist or is not a regular file"
+    fi
+done <$@

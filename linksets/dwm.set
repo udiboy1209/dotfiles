@@ -1,0 +1,2 @@
+wm/dwm-config.h : Projects/suckless/dwm/config.h
+wm/slstatus-config.h : Projects/suckless/slstatus/config.h

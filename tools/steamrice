@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+# vim: set ft=python
+from quik import FileLoader
+import os
+import shutil
+import yaml
+import argparse
+
+parser = argparse.ArgumentParser(description='Generate themed (steamed) rice configs from a template')
+
+parser.add_argument('--source', '-s', required=False, default='.', 
+                        help='Source folder of template files (defaults to current dir)')
+parser.add_argument('--dest', '-d', required=False, default='.', 
+                        help='Destination for generated rice configs (defaults to current dir)')
+parser.add_argument('--theme', '-t', required=True, 
+                        help='YAML file containing theme')
+
+args = parser.parse_args()
+
+source_dir = os.path.abspath(os.path.expanduser(args.source))
+target_dir = os.path.abspath(os.path.expanduser(args.dest))
+theme_file = args.theme
+
+# Copy if they differ
+copy_nontemplate = source_dir != target_dir
+
+loader = FileLoader(source_dir)
+with open(theme_file) as theme_yaml:
+    theme_dict = yaml.load(theme_yaml)
+
+for dirname, subdirlist, filelist in os.walk(source_dir, topdown=True):
+    if dirname == source_dir:
+        filelist = [f for f in filelist if not f[0] == '.']
+        subdirlist[:] = [d for d in subdirlist if not d[0] == '.']
+
+    for filename in filelist:
+        source_file = os.path.join(dirname, filename)
+        target_file = os.path.join(dirname.replace(source_dir, target_dir), 
+                                   filename.replace('.template',''))
+        
+        if not os.path.exists(os.path.dirname(target_file)):
+            os.makedirs(os.path.dirname(target_file))
+
+        if filename.endswith('.template'):
+            template = loader.load_template(source_file)
+
+            with open(target_file, 'w') as output:
+                print('Writing template: %s' % target_file)
+                # print(template.render(theme_dict))
+                output.write(template.render(theme_dict))
+
+            shutil.copymode(source_file, target_file)
+        elif copy_nontemplate:
+            print('Copying file: %s' % target_file)
+            shutil.copy2(source_file, target_file)
+

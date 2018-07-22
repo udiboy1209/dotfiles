@@ -19,6 +19,10 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'easymotion/vim-easymotion'
+
+Plugin 'gu-fan/simpleterm.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -39,6 +43,7 @@ set showcmd
 set hlsearch
 set cmdheight=1
 set laststatus=2
+set t_vb=
 
 " Editor options
 set autoindent
@@ -57,7 +62,6 @@ set splitright
 
 " Mappings
 
-map Y y$h
 map <Leader><CR> :nohl<CR>
 imap <Leader>c <C-P>
 map <Leader>b :NERDTreeToggle<CR>
@@ -73,6 +77,24 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Easymotion shortcuts
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>h <Plug>(easymotion-F)
+map <Leader>l <Plug>(easymotion-f)
+map <Leader>k <Plug>(easymotion-k)
+
 " Buffer switching
-nnoremap <M-k> :bprev<CR>
-nnoremap <M-j> :bnext<CR>
+nnoremap <Leader>p :bprev<CR>
+nnoremap <Leader>n :bnext<CR>
+
+" Simpleterm shortcuts
+nnoremap <Leader>tw :Sshow<CR>
+nnoremap <Leader>tt :Stoggle<CR>
+nnoremap <Leader>td :Scd<CR>
+
+nnoremap <Leader>te :Sexe<Space>
+
+tnoremap <Esc> <C-\><C-n>

@@ -19,3 +19,9 @@ function calc() {
 }
 
 export PATH=$PATH:~/Applications/android/sdk/platform-tools
+alias ssh="TERM=xterm ssh"
+
+export GOPATH=$HOME/Projects/go
+export PATH=$PATH:$GOPATH/bin
+
+# eval $(keychain --eval --quiet id_rsa id_rpi)

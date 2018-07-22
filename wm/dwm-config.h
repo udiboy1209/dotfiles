@@ -9,10 +9,10 @@ static const unsigned int padpx     = 10;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:size=8" ,
+static const char *fonts[]          = { "Hack:size=8" ,
                                         "Material Design Icons:size=10",
                                       };
-static const char dmenufont[]       = "Iosevka:size=8";
+static const char dmenufont[]       = "Hack:size=8";
 
 enum {Gray1, Gray2, Gray3, Gray4, Cyan, LightCyan, Magenta, LightMagenta, Blue, LightBlue, Red, LightRed, Green, LightGreen};
 static const char color[][8] = {
@@ -59,7 +59,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -71,7 +70,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "",      tile },    /* first entry is default */
 	{ "",      NULL },    /* no layout function means floating behavior */
-	{ "M",      monocle },
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -87,8 +86,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Cyan], "-sf", color[Gray2], NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Blue], "-sf", color[Gray2], NULL };
+static const char *dmenutermcmd[] = { "dmenu_term", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Blue], "-sf", color[Gray2], NULL };
+static const char *dmenunetcmd[] = { "dmenu_net", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Blue], "-sf", color[Gray2], NULL };
+static const char *termcmd[] = { "termite", NULL };
+static const char *slock[] = { "xautolock", "-locknow", NULL };
 
 static const char *volumeup[]  = { "amixer", "set", "Master", "3+", NULL };
 static const char *volumedown[]  = { "amixer", "set", "Master", "3-", NULL };
@@ -99,6 +101,8 @@ static const char *brightdown[]  = { "xbacklight", "-5", NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = dmenutermcmd } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = dmenunetcmd } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -131,6 +135,7 @@ static Key keys[] = {
         { 0,                            XF86XK_AudioMute,         spawn, {.v = volumemute } },
         { 0,                            XF86XK_MonBrightnessUp,   spawn, {.v = brightup } },
         { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdown } },
+        {MODKEY|ShiftMask,              XK_l,      spawn,         {.v = slock }},
 };
 
 /* button definitions */

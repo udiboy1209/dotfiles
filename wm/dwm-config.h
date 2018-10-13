@@ -23,7 +23,7 @@ static const char color[][8] = {
         "#EA7D24", /* cyan */
         "#F79321", /* light cyan */
         "#652F90", /* magenta */
-        "#894E9F", /* light magenta */
+        "#A96EAF", /* light magenta */
         "#1CA1DB", /* blue */
         "#00AFDA", /* light blue */
         "#BF1E2D", /* red */
@@ -57,8 +57,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	/* class                  instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",                 NULL,       NULL,       0,            1,           -1 },
+	{ "Termite",              NULL,       "alsamixer",0,            1,           -1 },
+	//{ "processing-app-Base",  NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -90,11 +92,11 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *dmenutermcmd[] = { "dmenu_term", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Blue], "-sf", color[Gray2], NULL };
 static const char *dmenunetcmd[] = { "dmenu_net", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", color[Gray1], "-nf", color[Gray3], "-sb", color[Blue], "-sf", color[Gray2], NULL };
 static const char *termcmd[] = { "termite", NULL };
-static const char *slock[] = { "xautolock", "-locknow", NULL };
+static const char *slock[] = { "slock", NULL };
 
-static const char *volumeup[]  = { "amixer", "set", "Master", "3+", NULL };
-static const char *volumedown[]  = { "amixer", "set", "Master", "3-", NULL };
-static const char *volumemute[]  = { "amixer", "set", "Master", "toggle", NULL };
+static const char *volumeup[]  = { "amixer", "sset", "Master", "3+", NULL };
+static const char *volumedown[]  = { "amixer", "sset", "Master", "3-", NULL };
+static const char *volumemute[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 static const char *brightup[]  = { "xbacklight", "+5", NULL}; 
 static const char *brightdown[]  = { "xbacklight", "-5", NULL}; 
 

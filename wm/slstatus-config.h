@@ -56,5 +56,6 @@ static const struct arg args[] = {
         { cpu_perc, "<\x03 %2s%%", NULL },
         { cpu_freq, "|\x03%4sMHz", NULL },
         { ram_used, "<\x05 %sGB", NULL },
+        { vol_perc, "<\x06 %s%%", "/dev/mixer" },
 	{ datetime, "<\x02%s", " %a, %d %b  %T" },
 };

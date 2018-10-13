@@ -9,9 +9,11 @@ amixer set Master 60% on
 amixer set Headphone 100% on
 amixer set Speaker 100% off
 
-keychain id_rpi id_rsa
-[ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
-[ -f ~/.keychain/$HOSTNAME-sh-gpg ] && . ~/.keychain/$HOSTNAME-sh-gpg 2>/dev/null
+# keychain id_rpi id_rsa
+# [ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
+# [ -f ~/.keychain/$HOSTNAME-sh-gpg ] && . ~/.keychain/$HOSTNAME-sh-gpg 2>/dev/null
 
-xautolock -locker slock -time 5 -killtime 6 -corners --00 & 
-xmodmap -e "keycode 106="
+xmodmap -e "keycode 109="
+xbacklight -set 50
+
+/usr/bin/dwm-log

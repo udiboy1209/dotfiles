@@ -11,17 +11,20 @@ PS1="\[\033[0;34m\][\w]\[\033[1;31m\]\$(if [ \$? -ne 0 ]; then echo ' (x)' ; fi)
 export LANG=en_US.UTF-8
 export PATH="$PATH:~/.local/bin"
 
-alias netctl="sudo netctl"
+alias netcfg="sudo netcfg"
 alias wlscan="sudo wlscan"
 
 function calc() {
     echo "scale=3; $@" | bc
 }
 
-export PATH=$PATH:~/Applications/android/sdk/platform-tools
+export PATH=$PATH:~/Applications/android/sdk/platform-tools:~/.gem/ruby/2.5.0/bin
 alias ssh="TERM=xterm ssh"
 
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
 
 # eval $(keychain --eval --quiet id_rsa id_rpi)
+
+export WORKON_HOME=~/Applications/venvs
+source $HOME/Applications/venvs/wrapper.sh

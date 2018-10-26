@@ -49,6 +49,7 @@ set t_vb=
 set autoindent
 set nostartofline
 set confirm
+set number relativenumber
 
 set backspace=indent,eol,start
 
@@ -87,8 +88,8 @@ map <Leader>l <Plug>(easymotion-f)
 map <Leader>k <Plug>(easymotion-k)
 
 " Buffer switching
-nnoremap <Leader>p :bprev<CR>
-nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>i :bprev<CR>
+nnoremap <Leader>o :bnext<CR>
 
 " Simpleterm shortcuts
 nnoremap <Leader>tw :Sshow<CR>

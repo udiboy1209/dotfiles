@@ -6,6 +6,10 @@ static const int interval = 1000;
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = " ";
 
+const char* print(const char* out) {
+    return out;
+}
+
 /* maximum output string length */
 #define MAXLEN 2048
 
@@ -51,11 +55,17 @@ static const char unknown_str[] = " ";
  */
 static const struct arg args[] = {
 	/* function format     argument */
-        { netspeed, "<\x04 %5s", NULL},
-        { wifi_essid, "|\x04 %s", "wlp3s0"},
+        { vol_perc, " %s%%\x04>", "/dev/mixer" },
+        { ipv4, "%s\x05|", "enp2s0"},
+        { ipv4, "%s\x05|", "wlp3s0"},
+        { netspeed, "%5s\x05>", NULL},
+        { wifi_essid, " %s\x06|", "wlp3s0"},
+        { wifi_perc, " %s%%\x06>", "wlp3s0"},
+
+        { print, "%s", ";"},
+
         { cpu_perc, "<\x03 %2s%%", NULL },
         { cpu_freq, "|\x03%4sMHz", NULL },
         { ram_used, "<\x05 %sGB", NULL },
-        { vol_perc, "<\x06 %s%%", "/dev/mixer" },
 	{ datetime, "<\x02%s", " %a, %d %b  %T" },
 };

@@ -24,7 +24,7 @@ alias ssh="TERM=xterm ssh"
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
 
-# eval $(keychain --eval --quiet id_rsa id_rpi)
+eval $(keychain --eval --quiet)
 
 export WORKON_HOME=~/Applications/venvs
 source $HOME/Applications/venvs/wrapper.sh

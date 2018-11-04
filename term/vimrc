@@ -23,6 +23,12 @@ Plugin 'easymotion/vim-easymotion'
 
 Plugin 'gu-fan/simpleterm.vim'
 
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+let g:deoplete#enable_at_startup = 1
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -60,6 +66,10 @@ set expandtab
 " Window options
 set splitbelow
 set splitright
+
+" Colors
+highlight Pmenu ctermbg=gray guibg=gray
+highlight PmenuSel ctermbg=blue guibg=blue
 
 " Mappings
 

@@ -1,4 +1,4 @@
-plugins: ftintitle edit fromfilename fetchart embedart
+plugins: ftintitle edit fromfilename fetchart embedart lastgenre
 library: ~/Music/.beetsdb
 directory: ~/Music
 paths:
@@ -7,6 +7,3 @@ paths:
 
 import:
     move: yes
-
-match:
-    ignored: missing_tracks

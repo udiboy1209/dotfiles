@@ -1,2 +1,3 @@
 wm/dwm-config.h : Projects/suckless/dwm/config.h
 wm/slstatus-config.h : Projects/suckless/slstatus/config.h
+wm/surf-config.h : Projects/suckless/surf/config.h

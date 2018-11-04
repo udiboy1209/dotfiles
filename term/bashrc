@@ -18,6 +18,10 @@ function calc() {
     echo "scale=3; $@" | bc
 }
 
+function hcalc() {
+    echo "obase=16;ibase=16; $@" | bc
+}
+
 export PATH=$PATH:~/Applications/android/sdk/platform-tools:~/.gem/ruby/2.5.0/bin
 alias ssh="TERM=xterm ssh"
 
@@ -28,3 +32,5 @@ eval $(keychain --eval --quiet)
 
 export WORKON_HOME=~/Applications/venvs
 source $HOME/Applications/venvs/wrapper.sh
+
+export MPD_HOST="0.0.0.0"

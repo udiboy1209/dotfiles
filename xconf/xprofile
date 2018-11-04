@@ -1,10 +1,10 @@
 #!/bin/bash
 
 slstatus &
-compton &
+# compton &
 redshift -l "19.076:72.877" &
 
-~/.fehbg &
+~/.fehbg
 amixer set Master 60% on
 amixer set Headphone 100% on
 amixer set Speaker 100% off
@@ -15,5 +15,6 @@ amixer set Speaker 100% off
 
 xmodmap -e "keycode 109="
 xbacklight -set 50
+mpd .config/mpd/mpd.conf
 
 /usr/bin/dwm-log

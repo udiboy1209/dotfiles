@@ -2,6 +2,3 @@ term/bashrc : .bashrc
 term/vimrc : .vimrc
 term/bin/pop_wallpaper : .local/bin/pop_wallpaper
 term/termite.conf : .config/termite/config
-music/cmus-rc : .config/cmus/rc
-music/cmus.theme : .config/cmus/my.theme
-music/beets-config.yaml : .config/beets/config.yaml

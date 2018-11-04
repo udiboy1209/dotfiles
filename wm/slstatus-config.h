@@ -61,6 +61,7 @@ static const struct arg args[] = {
         { netspeed, "%5s\x05>", NULL},
         { wifi_essid, " %s\x06|", "wlp3s0"},
         { wifi_perc, " %s%%\x06>", "wlp3s0"},
+        { mpd_status, " %s\x03>", NULL},
 
         { print, "%s", ";"},
 

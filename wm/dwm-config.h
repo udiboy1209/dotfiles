@@ -8,6 +8,8 @@ static const unsigned int gappx     = 8;        /* gap between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const double focusopacity    = 1.0;
+static const double unfocusopacity  = 0.85;
 static const char *fonts[]          = { "Hack:size=8" ,
                                         "Material Design Icons:size=10",
                                       };
@@ -98,8 +100,11 @@ static const char *slock[] = { "slock", NULL };
 static const char *volumeup[]  = { "amixer", "sset", "Master", "3+", NULL };
 static const char *volumedown[]  = { "amixer", "sset", "Master", "3-", NULL };
 static const char *volumemute[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
-static const char *brightup[]  = { "xbacklight", "+5", NULL}; 
-static const char *brightdown[]  = { "xbacklight", "-5", NULL}; 
+static const char *brightup[]  = { "xbacklight", "+5", NULL};
+static const char *brightdown[]  = { "xbacklight", "-5", NULL};
+static const char *musicnext[]  = { "mpc", "next", NULL};
+static const char *musicprev[]  = { "mpc", "prev", NULL};
+static const char *musictoggle[]  = { "mpc", "toggle", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -142,6 +147,9 @@ static Key keys[] = {
         { 0,                            XF86XK_AudioMute,         spawn, {.v = volumemute } },
         { 0,                            XF86XK_MonBrightnessUp,   spawn, {.v = brightup } },
         { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdown } },
+        { 0,                            XF86XK_AudioNext,         spawn, {.v = musicnext } },
+        { 0,                            XF86XK_AudioPrev,         spawn, {.v = musicprev } },
+        { 0,                            XF86XK_AudioPlay,         spawn, {.v = musictoggle } },
         {MODKEY|ShiftMask,              XK_l,      spawn,         {.v = slock }},
 };
 

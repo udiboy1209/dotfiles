@@ -1,7 +1,7 @@
 #!/bin/bash
 
 slstatus &
-# compton &
+compton &
 redshift -l "19.076:72.877" &
 
 ~/.fehbg

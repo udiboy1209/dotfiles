@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gap between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -58,9 +58,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                  instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",                 NULL,       NULL,       0,            1,           -1 },
-	//{ "processing-app-Base",  NULL,       NULL,       0,            1,           -1 },
+	/* class                  instance    title       tags mask     isfloating isignored  monitor */
+	{ "Gimp",                 NULL,       NULL,       0,            1,         0,               -1 },
+        { "Termite",              NULL,       "cava",     ~0,            1,         1,               -1 },
+	//{ "processing-app-Base",  NULL,       NULL,       0,            1,       0,               -1 },
 };
 
 /* layout(s) */
@@ -97,9 +98,9 @@ static const char *dmenunetcmd[] = { "dmenu_net", "-i", "-m", dmenumon, "-fn", d
 static const char *termcmd[] = { "termite", NULL };
 static const char *slock[] = { "slock", NULL };
 
-static const char *volumeup[]  = { "amixer", "sset", "Master", "3+", NULL };
-static const char *volumedown[]  = { "amixer", "sset", "Master", "3-", NULL };
-static const char *volumemute[]  = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
+static const char *volumeup[]  = { "amixer", "-q", "sset", "Master", "3+", NULL };
+static const char *volumedown[]  = { "amixer", "-q", "sset", "Master", "3-", NULL };
+static const char *volumemute[]  = { "amixer", "-q", "-D", "pulse", "sset", "Master", "toggle", NULL };
 static const char *brightup[]  = { "xbacklight", "+5", NULL};
 static const char *brightdown[]  = { "xbacklight", "-5", NULL};
 static const char *musicnext[]  = { "mpc", "next", NULL};

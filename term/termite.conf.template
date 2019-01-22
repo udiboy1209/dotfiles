@@ -1,15 +1,16 @@
 [options]
-font = Hack 8
+font = Hack 9
 allow_bold = true
 dynamic_title = true
 clickable_url = true
 search_wrap = true
 
-cursor_shape = ibeam
+cursor_shape = underline
 
 [colors]
 foreground = @color.foreground
-background = @color.background
+# background = @color.background
+background = rgba(0,0,0, 0.9)
 cursorColor = @color.cursor
 
 # black

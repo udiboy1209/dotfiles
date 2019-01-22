@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TERMAPPS="ncmpcpp alsamixer vim mpsyt htop"
+
+APP=$(echo $TERMAPPS | sed 's/ /\n/g' | dmenu $@)
+
+termite -e $APP &

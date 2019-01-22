@@ -89,22 +89,12 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(u, r) { \
-        .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
+        .v = (const char *[]){ "/bin/sh", "-c",\
              "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
              " -e \"$3\" \"$4\"; read", \
              "surf-download", useragent, cookiefile, r, u, NULL \
         } \
 }
-
-/* DOWNLOAD(URI, referer) */
-#define DOWNLOAD(u, r) { \
-        .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
-             "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
-             " -e \"$3\" \"$4\"; read", \
-             "surf-download", useragent, cookiefile, r, u, NULL \
-        } \
-}
-
 /* PLUMB(URI) */
 /* This called when some URI which does not begin with "about:",
  * "http://" or "https://" should be opened.

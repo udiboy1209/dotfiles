@@ -1,0 +1,40 @@
+enum {Gray1, Gray2, Gray3, Gray4,
+        Cyan, LightCyan,
+        Magenta, LightMagenta,
+        Blue, LightBlue,
+        Red, LightRed,
+        Yellow, LightYellow,
+        Green, LightGreen};
+static const char color[][8] = {
+        "@color.black", /* gray1 */
+        "@color.grey", /* gray2 */
+        "@color.light_grey", /* gray3 */
+        "@color.white", /* gray4 */
+        "@color.cyan", /* cyan */
+        "@color.light_cyan", /* light cyan */
+        "@color.magenta", /* magenta */
+        "@color.light_magenta", /* light magenta */
+        "@color.blue", /* blue */
+        "@color.light_blue", /* light blue */
+        "@color.red", /* red */
+        "@color.light_red", /* light red */
+        "@color.yellow", /* yellow */
+        "@color.light_yellow", /* light yellow */
+        "@color.green", /* green */
+        "@color.light_green", /* light green */
+};
+static const char *colors[][3]      = {
+       /*                 fg           bg            border   */
+       [SchemeNorm]     = { color[Gray3], color[Gray1], color[Gray4] },
+       [SchemeSel]      = { color[Gray1], color[LightBlue], color[Blue] },
+       [SchemeTitle]    = { color[Gray2], color[Gray1], color[Blue] },
+       [SchemeTitleSel] = { color[Red], color[Gray3], color[Blue] },
+};
+static const char *statuscolors[][5] = {
+        { color[Gray3], color[Gray2], color[Gray2] }, /* dark */
+        { color[Gray1], color[Gray3], color[Gray4] }, /* light */
+        { color[Gray1], color[LightBlue], color[Blue] },
+        { color[Gray1], color[LightRed], color[Red] },
+        { color[Gray1], color[LightGreen], color[Green] },
+        { color[Gray1], color[Yellow], color[Yellow] },
+};

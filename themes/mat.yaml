@@ -1,0 +1,23 @@
+wallpaper: "/home/udiboy/.local/share/wallpapers/mat.jpg"
+
+color:
+    background: "#101010"
+    foreground: "#e5e8ea"
+    cursor: "#e5e8ea"
+
+    color0: "#101010"
+    color1: "#3c74b5"
+    color2: "#479ac2"
+    color3: "#71b0cf"
+    color4: "#96c5dc"
+    color5: "#a2cce0"
+    color6: "#c0daea"
+    color7: "#e5e8ea"
+    color8: "#a0a2a3"
+    color9: "#3c74b5"
+    color10: "#479ac2"
+    color11: "#71b0cf"
+    color12: "#96c5dc"
+    color13: "#a2cce0"
+    color14: "#c0daea"
+    color15: "#e5e8ea"

@@ -1,20 +1,3 @@
 #!/bin/bash
 
-slstatus &
-compton &
-redshift -l "19.076:72.877" &
-
-~/.fehbg
-amixer set Master 60% on
-amixer set Headphone 100% on
-amixer set Speaker 100% off
-
-# keychain id_rpi id_rsa
-# [ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
-# [ -f ~/.keychain/$HOSTNAME-sh-gpg ] && . ~/.keychain/$HOSTNAME-sh-gpg 2>/dev/null
-
-xmodmap -e "keycode 109="
-xbacklight -set 50
-mpd .config/mpd/mpd.conf
-
 /usr/bin/dwm-log

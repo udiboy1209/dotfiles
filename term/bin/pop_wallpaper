@@ -2,13 +2,17 @@
 
 WPDIR=$HOME/.local/share/wallpapers
 WPFILE=/tmp/wplist
+WPCACHE=/tmp/wp.blur.png
 
 if ! [ -s $WPFILE ];
 then
     ls $WPDIR | shuf > $WPFILE
-    pop_wallpaper
+    # pop_wallpaper
 fi
 
-echo $WPDIR/$(head -1 $WPFILE) && \
+NEXTWP=$WPDIR/$(head -1 $WPFILE)
+
+convert "$NEXTWP" -filter Gaussian -blur 0x8 "$WPCACHE" && \
+echo $NEXTWP && \
 tail -n +2 $WPFILE > $WPFILE.tmp && \
 mv $WPFILE.tmp $WPFILE

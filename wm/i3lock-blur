@@ -1,0 +1,5 @@
+#!/bin/sh
+
+scrot /tmp/scrot.png && \
+convert /tmp/scrot.png -blur 31x32 -attenuate 0.1 +noise Gaussian /tmp/scrot-blurred.png && \
+i3lock -i /tmp/scrot-blurred.png

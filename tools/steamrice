@@ -8,11 +8,11 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Generate themed (steamed) rice configs from a template')
 
-parser.add_argument('--source', '-s', required=False, default='.', 
+parser.add_argument('--source', '-s', required=False, default='.',
                         help='Source folder of template files (defaults to current dir)')
-parser.add_argument('--dest', '-d', required=False, default='.', 
+parser.add_argument('--dest', '-d', required=False, default='.',
                         help='Destination for generated rice configs (defaults to current dir)')
-parser.add_argument('--theme', '-t', required=True, 
+parser.add_argument('--theme', '-t', required=True,
                         help='YAML file containing theme')
 
 args = parser.parse_args()
@@ -24,9 +24,35 @@ theme_file = args.theme
 # Copy if they differ
 copy_nontemplate = source_dir != target_dir
 
+color_mappings = [
+    ('black', 'color0'),
+    ('red', 'color1'),
+    ('green', 'color2'),
+    ('yellow', 'color3'),
+    ('blue', 'color4'),
+    ('magenta', 'color5'),
+    ('cyan', 'color6'),
+    ('white', 'color7'),
+    ('grey', 'color8'),
+    ('light_red', 'color9'),
+    ('light_green', 'color10'),
+    ('light_yellow', 'color11'),
+    ('light_blue', 'color12'),
+    ('light_magenta', 'color13'),
+    ('light_cyan', 'color14'),
+    ('light_grey', 'color15'),
+]
+
+
 loader = FileLoader(source_dir)
 with open(theme_file) as theme_yaml:
     theme_dict = yaml.load(theme_yaml)
+    colors = theme_dict['color']
+    for mapping in color_mappings:
+        if mapping[0] not in colors and mapping[1] in colors:
+            colors[mapping[0]] = colors[mapping[1]]
+        if mapping[1] not in colors and mapping[0] in colors:
+            colors[mapping[1]] = colors[mapping[0]]
 
 for dirname, subdirlist, filelist in os.walk(source_dir, topdown=True):
     if dirname == source_dir:
@@ -35,9 +61,9 @@ for dirname, subdirlist, filelist in os.walk(source_dir, topdown=True):
 
     for filename in filelist:
         source_file = os.path.join(dirname, filename)
-        target_file = os.path.join(dirname.replace(source_dir, target_dir), 
+        target_file = os.path.join(dirname.replace(source_dir, target_dir),
                                    filename.replace('.template',''))
-        
+
         if not os.path.exists(os.path.dirname(target_file)):
             os.makedirs(os.path.dirname(target_file))
 

@@ -8,7 +8,6 @@
 alias ls='ls --color=auto'
 PS1="\[\033[0;34m\][\w]\[\033[1;31m\]\$(if [ \$? -ne 0 ]; then echo ' (x)' ; fi)\[\033[1;37m\]\n\[\033[0;32m\]\$ \[\033[m\]"
 
-export LANG=en_US.UTF-8
 export PATH="$PATH:~/.local/bin"
 
 alias netcfg="sudo netcfg"
@@ -23,7 +22,7 @@ function hcalc() {
 }
 
 export PATH=$PATH:~/Applications/android/sdk/platform-tools:~/.gem/ruby/2.5.0/bin
-alias ssh="TERM=xterm ssh"
+alias ssh="TERM=xterm-color ssh"
 
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin

@@ -55,7 +55,7 @@ const char* print(const char* out) {
  */
 static const struct arg args[] = {
 	/* function format     argument */
-        { vol_perc, " %s%%\x04>", "/dev/mixer" },
+        { run_command , " %s\x04>", "pamixer --get-volume-human" },
         { ipv4, "%s\x05|", "enp2s0"},
         { ipv4, "%s\x05|", "wlp3s0"},
         { netspeed, "%5s\x05>", NULL},

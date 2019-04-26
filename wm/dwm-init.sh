@@ -11,9 +11,8 @@ compton &
 redshift -l "19.076:72.877" &
 
 echo "Other settings"
-amixer set Master 60% on
-amixer set Headphone 100% on
-amixer set Speaker 100% off
+amixer set Master 100% on
+pamixer --set-volume 60
 
 xmodmap -e "keycode 109="
 

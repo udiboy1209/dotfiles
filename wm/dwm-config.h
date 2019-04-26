@@ -18,7 +18,7 @@ static const char dmenufont[]       = "Iosevka:size=8";
 #include "colors.h"
 
 /* tagging */
-static const char *tags[] = { "A", "B", "C", "D", "E", "F" };
+char *tags[] = { "A", "B", "C", "D", "E", "F" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,9 +71,9 @@ static const char *initcmd[] = { "/home/udiboy/.local/bin/dwm-init.sh", NULL};
 static const char *lock[] = { "i3lock-blur", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 
-static const char *volumeup[]  = { "amixer", "-q", "sset", "Master", "3+", NULL };
-static const char *volumedown[]  = { "amixer", "-q", "sset", "Master", "3-", NULL };
-static const char *volumemute[]  = { "amixer", "-q", "-D", "pulse", "sset", "Master", "toggle", NULL };
+static const char *volumeup[]  = { "pamixer", "-i", "5", NULL };
+static const char *volumedown[]  = { "pamixer", "-d", "5", NULL };
+static const char *volumemute[]  = { "pamixer", "-t", NULL };
 static const char *brightup[]  = { "xbacklight", "+5", NULL};
 static const char *brightdown[]  = { "xbacklight", "-5", NULL};
 static const char *musicnext[]  = { "mpc", "next", NULL};
@@ -139,11 +139,11 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkWinTitle,          0,              Button1,        zoom,           {0} },
+//	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY|ShiftMask,Button1,       resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

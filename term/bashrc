@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1="\[\033[0;34m\][\w]\[\033[1;31m\]\$(if [ \$? -ne 0 ]; then echo ' (x)' ; fi)\[\033[1;37m\]\n\[\033[0;32m\]\$ \[\033[m\]"
+PS1="\[\033[1;34m\][\w]\[\033[1;31m\]\$(if [ \$? -ne 0 ]; then echo ' (x)' ; fi)\[\033[1;37m\]\n\[\033[1;32m\]\$ \[\033[m\]"
 
 export PATH=$PATH:~/.local/bin
 
@@ -30,3 +30,20 @@ export WORKON_HOME=~/Applications/venvs
 source $HOME/Applications/venvs/wrapper.sh
 
 export MPD_HOST="0.0.0.0"
+
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+export FZF_DEFAULT_OPTS="--height 30% --reverse --preview 'head {}'"
+export FZF_DEFAULT_COMMAND="fd --type f -I"
+
+fzd() {
+    fd "" "$@" --type d -I | fzf --preview 'ls {}'
+}
+
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_prompt_command
+fi

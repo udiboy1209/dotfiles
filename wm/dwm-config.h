@@ -4,8 +4,8 @@
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int gappx     = 16;        /* gap between windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappx     = 8;        /* gap between windows */
+static const unsigned int snap      = 4;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const double focusopacity    = 1.0;
@@ -16,6 +16,22 @@ static const char *fonts[]          = { "Iosevka:size=8" ,
 static const char dmenufont[]       = "Iosevka:size=8";
 
 #include "colors.h"
+#define color themecolor
+static const char *colors[][3]      = {
+       /*                 fg           bg            border   */
+       [SchemeNorm]     = { color[Gray2], color[LightYellow], color[Gray4] },
+       [SchemeSel]      = { color[Gray1], color[Red], color[Blue] },
+       [SchemeTitle]    = { color[Gray2], color[LightRed], color[Blue] },
+       [SchemeTitleSel] = { color[Gray1], color[Red], color[Blue] },
+};
+static const char *statuscolors[][3] = {
+        { color[Gray3], color[Gray2], color[Gray2] }, /* dark */
+        { color[Gray1], color[Gray3], color[Gray4] }, /* light */
+        { color[Gray1], color[LightBlue], color[Blue] },
+        { color[Gray1], color[LightRed], color[Red] },
+        { color[Gray1], color[LightGreen], color[Green] },
+        { color[Gray1], color[Yellow], color[Yellow] },
+};
 
 /* tagging */
 char *tags[] = { "A", "B", "C", "D", "E", "F" };
@@ -59,14 +75,14 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-#define DMENUOPTS "-m",dmenumon,"-fn",dmenufont,"-nb",color[Gray1],"-nf",color[Gray3],"-sb",color[Green],"-sf",color[Gray3]
+#define DMENUOPTS "-m",dmenumon,"-fn",dmenufont,"-nb",color[LightYellow],"-nf",color[Gray2],"-sb",color[LightRed],"-sf",color[Gray2]
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", DMENUOPTS, NULL };
+static const char *dmenucmd[] = { "deskrun", DMENUOPTS, NULL };
 static const char *dmenutermcmd[] = { "dmenu_term", DMENUOPTS, NULL };
 static const char *dmenunetcmd[] = { "dmenu_net", "-i", "-p", "Netcfg", DMENUOPTS, NULL };
 static const char *dmenuexecmd[] = { "dmenu_exec", "-p", "Execute", DMENUOPTS, NULL };
-static const char *termcmd[] = { "termite", NULL };
+static const char *termcmd[] = { "st", "-e", "/usr/bin/fish", NULL };
 static const char *initcmd[] = { "/home/udiboy/.local/bin/dwm-init.sh", NULL};
 static const char *lock[] = { "i3lock-blur", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
@@ -149,4 +165,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
+#undef color
 

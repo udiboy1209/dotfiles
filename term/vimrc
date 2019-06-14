@@ -69,6 +69,7 @@ set fillchars=vert:│
 highlight VertSplit cterm=none
 highlight Pmenu ctermbg=gray guibg=gray
 highlight PmenuSel ctermbg=blue guibg=blue
+set background=dark
 
 " Airline options
 let g:airline_powerline_fonts = 1

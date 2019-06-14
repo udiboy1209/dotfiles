@@ -1,18 +1,22 @@
 #!/bin/bash
 
-echo "Setting background and starting mpd, slstatus"
-time /home/udiboy/.fehbg
-time mpd /home/udiboy/.config/mpd/mpd.conf
+echo "Set background and backlight, start slstatus"
+date +'%s %N'
+/home/udiboy/.fehbg
 slstatus &
-
-echo "Backlight, compton redshift"
 xbacklight -set 30
-compton &
-redshift -l "19.076:72.877" &
+
+
+echo "Start compton, redshift and mpd"
+date +'%s %N'
+pgrep compton || compton &
+pgrep redshift || redshift -l "19.076:72.877" &
+mpd /home/udiboy/.config/mpd/mpd.conf
 
 echo "Other settings"
-amixer set Master 100% on
+date +'%s %N'
 pamixer --set-volume 60
-
 xmodmap -e "keycode 109="
+
+
 

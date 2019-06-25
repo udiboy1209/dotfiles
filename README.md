@@ -2,13 +2,13 @@
 
 Collection of various dotfiles and configs, and tools to install and modify them
 
-![scrot](scrot.png "Screenshot")
+![scrot](scrots/cnh.png "Screenshot")
 
 WM is dwm, with custom [patch](https://gist.github.com/udiboy1209/c4a47c3bb1bbfa5498032dee34bc144a).
 
 ## Installation
 
-I have written two scripts `rclink` and `rcunlink` based on the functioning of 
+I have written two scripts `rclink` and `rcunlink` based on the functioning of
 [GNU stow](https://www.gnu.org/software/stow/). They take a list of mappings from local dir
 to home dir, and generate symlinks pretty much like how `stow` does.
 
@@ -41,6 +41,6 @@ It will scan current directory and run `quik` all `*.template` files, generating
 $ tools/steamrice -t themes/get-fresh.yaml
 ```
 
-If you have used `rclink`, then the changes will be seen directly. 
+If you have used `rclink`, then the changes will be seen directly.
 
 *Note: be sure to add file and not its template to linkset*

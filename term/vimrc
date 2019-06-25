@@ -52,7 +52,7 @@ set t_vb=
 set autoindent
 set nostartofline
 set confirm
-set number relativenumber
+" set number relativenumber
 
 set backspace=indent,eol,start
 

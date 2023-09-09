@@ -1,0 +1,54 @@
+#!/bin/bash
+
+function help {
+    echo "Usage: $0 <cmd> <map>"
+    echo
+    echo "  <cmd>: put, get, diff, help"
+    echo "  <map>: map file"
+}
+
+CMD=$1
+MAP=$2
+
+if [ "$CMD" == "" -o "$CMD" == "help" ]
+then
+    help
+    exit 1
+fi
+
+if [ ! -f "$MAP" ]
+then
+    echo "Need map!"
+    help
+    exit 1
+fi
+
+while read -r line
+do
+    IFS=" : " read src dest <<< $line
+
+    # echo "## $line ##" $src -- $dest
+
+    dest="$HOME/$dest"
+    src="$PWD/$src"
+    
+    # Continue if files are identical
+    diff -qN $src $dest > /dev/null && echo "Identical $src -- $dest" && continue
+
+    if [ "$CMD" == "put" ]
+    then
+        mkdir -p $(dirname $dest)
+        cp -v $src $dest 
+    elif [ "$CMD" == "get" ]
+    then
+        mkdir -p $(dirname $src)
+        cp -v $dest $src
+    elif [ "$CMD" == "diff" ]
+    then
+        diff -upN --color=auto $dest $src
+    else
+        echo "Invalid command $CMD"
+        help
+        exit 1
+    fi
+done < $MAP

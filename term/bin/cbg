@@ -1,5 +1,0 @@
-#!/bin/sh
-
-termite -e cava -c ~/.config/cava/termite.conf 2>&1 1>/dev/null &
-sleep 0.5
-wmctrl -r cava -e 0,0,552,1368,200

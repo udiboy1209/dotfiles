@@ -1,0 +1,170 @@
+#newcommand
+snippet nc \newcommand
+	\\newcommand{\\${1:cmd}}[${2:opt}]{${3:realcmd}} ${0}
+#usepackage
+snippet up \usepackage
+	\\usepackage[${1:options}]{${2:package}} ${0}
+
+# \begin{}...\end{}
+snippet begin \begin{} ... \end{} block
+	\\begin{${1:env}}
+		${0:${VISUAL}}
+	\\end{$1}
+	
+# Enumerate and Itemize
+snippet enum enumerate environment
+	\\begin{enumerate}
+		\\item ${0}
+	\\end{enumerate}
+snippet item itemize environment
+	\\begin{itemize}
+		\\item ${0}
+	\\end{itemize}
+snippet it \item
+	\\item ${1:${VISUAL}}
+snippet ]i \item (recursive)
+	\\item ${1}
+		${0:]i}
+snippet itd description \item
+	\\item[${1:description}] ${0:item}
+
+# Sections
+snippet sec \section
+	\\section{${1:section name}} \\label{sec:${2:$1}}
+	${0}
+snippet sec* \section*
+	\\section*{${1:section name}} \\label{sec:${2:$1}}
+	${0}
+snippet sub \subsection
+	\\subsection{${1:subsection name}} \\label{sub:${2:$1}}
+	${0}
+snippet sub* \subsection*
+	\\subsection*{${1:subsection name}} \\label{sub:${2:$1}}
+	${0}
+snippet ssub \subsubsection
+	\\subsubsection{${1:subsubsection name}} \\label{ssub:${2:$1}}
+	${0}
+snippet ssub* \subsubsection*
+	\\subsubsection*{${1:subsubsection name}} \\label{ssub:${2:$1}}
+	${0}
+snippet ni \noindent
+	\\noindent
+	${0}
+
+#References
+snippet lab \label
+	\\label{${1:eq:}${2:fig:}${3:tab:}${0}}
+snippet figure reference to a figure
+	${1:Figure}~\\ref{${2:fig:}}
+snippet table reference to a table
+	${1:Table}~\\ref{${2:tab:}}
+snippet listing reference to a listing
+	${1:Listing}~\\ref{${2:list}}
+snippet section reference to a section
+	${1:Section}~\\ref{sec:${2}} ${0}
+snippet page reference to a page
+	${1:page}~\\pageref{${2}} ${0}
+snippet index \index
+	\\index{${1:index}} ${0}
+
+# natbib citations
+snippet citep \citep
+	\\citep{${1}} ${0}
+snippet citet \citet
+	\\citet{${1}} ${0}
+snippet cite \cite[]{}
+	\\cite[${1}]{${2}} ${0}
+snippet citea \citeauthor
+	\\citeauthor{${1}} ${0}
+snippet citey \citeyear
+	\\citeyear{${1}} ${0}
+
+snippet ita italic text
+	\\textit{${1:${VISUAL:text}}}${0}
+snippet bf bold face text
+	\\textbf{${1:${VISUAL:text}}}${0}
+snippet under underline text
+	\\underline{${1:${VISUAL:text}}}${0}
+snippet over overline text
+	\\overline{${1:${VISUAL:text}}}${0}
+snippet emp emphasize text
+	\\emph{${1:${VISUAL:text}}}${0}
+snippet tsub subscripted text
+	\\textsubscript{${1:${VISUAL:text}}}${0}
+snippet tsup superscripted text
+	\\textsuperscript{${1:${VISUAL:text}}}${0}
+snippet ft \footnote
+	\\footnote{${1:${VISUAL:text}}}${0}
+
+# figure
+snippet fig figure environment (includegraphics)
+	\\begin{figure}
+		\\centering
+		\\includegraphics[width=${1}\linewidth]{${2}}
+		\\caption{${3}}
+		\\label{fig:${4}}
+	\\end{figure}
+	${0}
+snippet incl includegraphics
+	\\includegraphics[width=${1}\linewidth]{${2}}
+
+#math
+snippet frac \frac{}{}
+	\\frac{${1:num}}{${2:denom}} ${0}
+snippet vec vector
+	\\vec{{$1}} {$0}
+snippet bar bar
+	\\bar{{$1}} {$0}
+snippet mf mathfrak
+	\\mathfrak{${1:${VISUAL:text}}}${0}
+snippet mc mathcal
+	\\mathcal{${1:${VISUAL:text}}}${0}
+snippet ms mathscr
+	\\mathscr{${1:${VISUAL:text}}}${0}
+snippet mbb mathbb
+	\\mathbb{${1:${VISUAL:text}}}${0}
+snippet cas cases environment
+	\\begin{cases}
+		${1:equation}, &\\text{ if }${2:case}\\
+		${0:${VISUAL}}
+	\\end{cases}
+snippet eq equation environment
+	\\begin{equation}
+		${0:${VISUAL}}
+	\\end{equation}
+
+#delimiter
+snippet \{ \{ \}
+	\\{ ${0} \\}
+snippet lr left right
+	\\left${1} ${0:${VISUAL}} \\right$1
+snippet lr( left( right)
+	\\left( ${0:${VISUAL}} \\right)
+snippet lr| left| right|
+	\\left| ${0:${VISUAL}} \\right|
+snippet lr{ left\{ right\}
+	\\left\\{ ${0:${VISUAL}} \\right\\}
+snippet lr[ left[ right]
+	\\left[ ${0:${VISUAL}} \\right]
+snippet lra langle rangle
+	\\langle ${0:${VISUAL}} \\rangle
+
+# Code listings
+snippet lst
+	\\begin{listing}[language=${1:language}]
+		${0:${VISUAL}}
+	\\end{listing}
+snippet lsi
+	\\lstinline|${1}| ${0}
+
+# Hyperlinks
+snippet url
+	\\url{${1}} ${0}
+snippet href
+	\\href{${1}}{${2}} ${0}
+# URL from Clipboard.
+snippet urlc
+	\\url{`@+`} ${0}
+snippet hrefc
+	\\href{`@+`}{${1}} ${0}
+

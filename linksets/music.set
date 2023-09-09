@@ -1,5 +1,0 @@
-music/cmus-rc : .config/cmus/rc
-music/cmus.theme : .config/cmus/my.theme
-music/beets-config.yaml : .config/beets/config.yaml
-music/mpd.conf : .config/mpd/mpd.conf
-music/ncmpcpp.config : .ncmpcpp/config

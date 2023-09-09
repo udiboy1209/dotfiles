@@ -1,8 +1,0 @@
-#!/bin/bash
-
-PROFILE=$(netcfg list | dmenu $@)
-
-if [[ $? == 0 ]]
-then
-    sudo netcfg swap $PROFILE
-fi

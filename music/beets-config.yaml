@@ -1,9 +1,0 @@
-plugins: ftintitle edit fromfilename fetchart embedart lastgenre
-library: ~/Music/.beetsdb
-directory: ~/Music
-paths:
-    default: $albumartist/$album/$track-$title
-    singleton: Non-Album/$artist/$title
-
-import:
-    move: yes

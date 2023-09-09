@@ -1,4 +1,0 @@
-term/bashrc : .bashrc
-term/vimrc : .vimrc
-term/bin/pop_wallpaper : .local/bin/pop_wallpaper
-term/termite.conf : .config/termite/config

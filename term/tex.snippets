@@ -30,22 +30,22 @@ snippet itd description \item
 
 # Sections
 snippet sec \section
-	\\section{${1:section name}} \\label{sec:${2:$1}}
+	\\section{${1:section name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet sec* \section*
-	\\section*{${1:section name}} \\label{sec:${2:$1}}
+	\\section*{${1:section name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet sub \subsection
-	\\subsection{${1:subsection name}} \\label{sub:${2:$1}}
+	\\subsection{${1:subsection name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet sub* \subsection*
-	\\subsection*{${1:subsection name}} \\label{sub:${2:$1}}
+	\\subsection*{${1:subsection name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet ssub \subsubsection
-	\\subsubsection{${1:subsubsection name}} \\label{ssub:${2:$1}}
+	\\subsubsection{${1:subsubsection name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet ssub* \subsubsection*
-	\\subsubsection*{${1:subsubsection name}} \\label{ssub:${2:$1}}
+	\\subsubsection*{${1:subsubsection name}} \\label{sec:${2:${1/\(\w*\).*/\L\1/}}}
 	${0}
 snippet ni \noindent
 	\\noindent
@@ -53,16 +53,18 @@ snippet ni \noindent
 
 #References
 snippet lab \label
-	\\label{${1:eq:}${2:fig:}${3:tab:}${0}}
-snippet figure reference to a figure
-	${1:Figure}~\\ref{${2:fig:}}
-snippet table reference to a table
-	${1:Table}~\\ref{${2:tab:}}
-snippet listing reference to a listing
-	${1:Listing}~\\ref{${2:list}}
-snippet section reference to a section
+	\\label{${1|eq:,fig:,sec:|}${0}}
+snippet ref reference
+	\\ref{${1}}
+snippet rfig reference to a figure
+	${1:Figure}~\\ref{${2:fig:}${0}}
+snippet rtab reference to a table
+	${1:Table}~\\ref{${2:tab:}${0}}
+snippet rlis reference to a listing
+	${1:Listing}~\\ref{${2:list}${0}}
+snippet rsec reference to a section
 	${1:Section}~\\ref{sec:${2}} ${0}
-snippet page reference to a page
+snippet rpage reference to a page
 	${1:page}~\\pageref{${2}} ${0}
 snippet index \index
 	\\index{${1:index}} ${0}
@@ -79,21 +81,21 @@ snippet citea \citeauthor
 snippet citey \citeyear
 	\\citeyear{${1}} ${0}
 
-snippet ita italic text
+snippet tit italic text
 	\\textit{${1:${VISUAL:text}}}${0}
-snippet bf bold face text
+snippet tbf bold face text
 	\\textbf{${1:${VISUAL:text}}}${0}
-snippet under underline text
+snippet ttt type face text
+	\\texttt{${1:${VISUAL:text}}}${0}
+snippet tunder underline text
 	\\underline{${1:${VISUAL:text}}}${0}
-snippet over overline text
+snippet tover overline text
 	\\overline{${1:${VISUAL:text}}}${0}
-snippet emp emphasize text
+snippet temph emphasize text
 	\\emph{${1:${VISUAL:text}}}${0}
-snippet tsub subscripted text
-	\\textsubscript{${1:${VISUAL:text}}}${0}
 snippet tsup superscripted text
 	\\textsuperscript{${1:${VISUAL:text}}}${0}
-snippet ft \footnote
+snippet foot \footnote
 	\\footnote{${1:${VISUAL:text}}}${0}
 
 # figure
@@ -105,8 +107,21 @@ snippet fig figure environment (includegraphics)
 		\\label{fig:${4}}
 	\\end{figure}
 	${0}
-snippet incl includegraphics
+snippet gra includegraphics
 	\\includegraphics[width=${1}\linewidth]{${2}}
+
+# table
+snippet tab table environment
+	\\begin{table}
+		\\centering
+		\\caption{${1}}
+		\\label{tab:${2}}
+		\\begin{tabular}{|l|c|}
+			\\hline
+			\\textbf{${3}} & \\textbf{${4}} \\\\
+			\\hline
+		\\end{tabular}
+	\\end{table}
 
 #math
 snippet frac \frac{}{}
@@ -117,6 +132,8 @@ snippet bar bar
 	\\bar{{$1}} {$0}
 snippet mf mathfrak
 	\\mathfrak{${1:${VISUAL:text}}}${0}
+snippet mrm mathrm
+	\\mathrm{${1:${VISUAL:text}}}${0}
 snippet mc mathcal
 	\\mathcal{${1:${VISUAL:text}}}${0}
 snippet ms mathscr

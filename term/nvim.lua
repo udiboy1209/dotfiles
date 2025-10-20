@@ -9,6 +9,7 @@ Plug('dcampos/nvim-snippy')
 Plug('nvim-tree/nvim-web-devicons')
 Plug('feline-nvim/feline.nvim')
 Plug('lewis6991/gitsigns.nvim')
+Plug('navarasu/onedark.nvim')
 
 vim.call('plug#end')
 
@@ -38,6 +39,11 @@ vim.keymap.set('n', '<Leader>cn', ':cn<cr>')
 vim.keymap.set('n', '<Leader>cp', ':cp<cr>')
 vim.keymap.set('n', '<Leader>cl', ':ccl<cr>')
 vim.keymap.set('n', '<Leader>cw', ':cw<cr>')
+
+require('onedark').setup({
+    style = 'darker'
+})
+require('onedark').load()
 
 require('snippy').setup({
     mappings = {

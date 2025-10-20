@@ -1,5 +1,6 @@
 term/bashrc : .bashrc
 term/nvim.lua : .config/nvim/init.lua
 term/tex.snippets : .config/nvim/snippets/tex.snippets
+term/alacritty.yml : .config/alacritty/alacritty.yml
+colors/alacritty_onedark.yml : .config/alacritty/onedark_colors.yml
 scripts/dotman : .local/bin/dotman
-term/wezterm.lua : .config/wezterm/wezterm.lua

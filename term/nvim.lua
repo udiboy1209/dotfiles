@@ -6,7 +6,9 @@ Plug('tpope/vim-fugitive')
 Plug('tpope/vim-surround')
 Plug('tpope/vim-commentary')
 Plug('dcampos/nvim-snippy')
+Plug('nvim-tree/nvim-web-devicons')
 Plug('feline-nvim/feline.nvim')
+Plug('lewis6991/gitsigns.nvim')
 
 vim.call('plug#end')
 
@@ -49,4 +51,16 @@ require('snippy').setup({
     },
 })
 
+require('gitsigns').setup()
+require('nvim-web-devicons').setup()
+require('feline').setup()
+
 vim.opt.completeopt = 'menu'
+
+-- Transparent BG
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]

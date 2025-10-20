@@ -5,9 +5,9 @@ local config = wezterm.config_builder()
 
 -- Appearance (optional)
 config.font = wezterm.font "Cousine Nerd Font"
-config.font_size = 14
+config.font_size = 12
 config.color_scheme = "Dracula"
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 config.enable_tab_bar = true
 -- config.hide_tab_bar_if_only_one_tab = true
 

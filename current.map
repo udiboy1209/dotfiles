@@ -1,5 +1,4 @@
 term/bashrc : .bashrc
 term/nvim.lua : .config/nvim/init.lua
-term/tex.snippets : .config/nvim/snippets/tex.snippets
 scripts/dotman : .local/bin/dotman
 term/wezterm.lua : .config/wezterm/wezterm.lua

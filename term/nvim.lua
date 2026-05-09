@@ -76,10 +76,14 @@ require('lazy').setup({
     opts = {}
   },
   {
-    'navarasu/onedark.nvim',
-    opts = {
-      style = 'darker'
-    }
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      -- load the colorscheme here
+      vim.cmd.colorscheme('tokyonight')
+    end,
   },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -158,7 +162,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -303,9 +307,9 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map('<leader>th', function()
+            map('<leader>ih', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
+            end, 'Toggle [I]nlay [H]ints')
           end
         end,
       })
@@ -361,7 +365,7 @@ require('lazy').setup({
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = "basic", -- or "strict", "off"
+                typeCheckingMode = "off", -- or "strict", "off"
                 -- Add other Pyright settings as needed
               },
             },
@@ -476,7 +480,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       sources = {
@@ -497,6 +501,18 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets'
     }
   },
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+      vim.keymap.set('n', '<leader>t', ':NvimTreeFocus<CR>', { desc = '[T]ree Toggle and Focus' })
+    end,
+  }
 })
 
 -- vim: ts=2 sts=2 sw=2 et

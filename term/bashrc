@@ -49,7 +49,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.local/lib/npm-packages/bin"
 source "$HOME/.cargo/env"
 
 # Calc shortcuts for different types

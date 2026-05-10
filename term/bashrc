@@ -26,20 +26,39 @@ function fzd {
 }
 export fzd
 
-function senv {
-    # Source python venv
-    if [ -z "$1" ]
-    then
-        v=$(ls $HOME/venvs | fzf)
-    else
-        v=$1
-    fi
-    if [ -z "$v" ]
-    then
-        echo none selected
-    else
-        source $HOME/venvs/$v/bin/activate
-    fi
-}
-export senv
+function senv() {
+  local cache_file="$HOME/.cache/venv_registry"
+  local max_age_seconds=86400  # 1 day
 
+  # Refresh cache if missing or older than 1 day
+  if [[ ! -f "$cache_file" ]] || \
+     [[ $(( $(date +%s) - $(date +%s -r "$cache_file") )) -gt $max_age_seconds ]]; then
+    fd --hidden --no-ignore-vcs \
+       --exclude .cache \
+       --exclude node_modules \
+       --exclude .cargo \
+       --exclude .rustup \
+       --exclude .local \
+       -g 'activate' ~ \
+      | rg '(venvs|\.venv)' \
+      | sed "s|$HOME/||" \
+      | sed 's|/bin/activate||' \
+      > "$cache_file"
+  fi
+
+  local selected
+  selected=$(fzf --prompt="senv> " \
+                 --preview="ls $HOME/{}/lib" \
+                 < "$cache_file")
+
+  [[ -n "$selected" ]] && source "$HOME/$selected/bin/activate"
+}
+
+# Force refresh the cache
+function senv_refresh() {
+  rm -f "$HOME/.cache/venv_registry"
+  senv
+}
+export senv senv_refresh
+
+eval "$(starship init bash)"

@@ -1,0 +1,27 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Timeout tweaks to keep it snappy
+scan_timeout = 30
+command_timeout = 500
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+
+[python]
+format = '[(\($virtualenv\))]($style) '
+style = "yellow bold"
+detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "*.py"]
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[status]
+disabled = false
+format = '[✗ $status]($style) '
+style = "bold red"
+pipestatus = true

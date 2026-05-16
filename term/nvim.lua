@@ -329,6 +329,7 @@ require('lazy').setup({
     'saghen/blink.cmp',
     event = 'VimEnter',
     version = '1.*',
+    debug = true,
     opts = {
       keymap = {
         -- See :h blink-cmp-config-keymap for defining your own keymap
@@ -343,13 +344,11 @@ require('lazy').setup({
       sources = {
         default = { 'lsp', 'buffer', 'path', 'snippets' },
       },
-      snippets = { preset = 'default' },
+      snippets = { preset = 'luasnip' },
       fuzzy = { implementation = 'prefer_rust_with_warning' },
       signature = { enabled = true },
     },
-    dependencies = {
-      'rafamadriz/friendly-snippets'
-    }
+    dependencies = { 'L3MON4D3/LuaSnip' }
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -362,6 +361,16 @@ require('lazy').setup({
       require("nvim-tree").setup {}
       vim.keymap.set('n', '<leader>t', ':NvimTreeFocus<CR>', { desc = '[T]ree Toggle and Focus' })
     end,
+  },
+  {
+    'L3MON4D3/LuaSnip',
+    version = "v2.*",
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      -- Can load custom snippets using additional loads
+      -- require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets/" })
+    end,
+    dependencies = { 'rafamadriz/friendly-snippets' }
   }
 })
 

@@ -65,7 +65,22 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- Plug('dcampos/nvim-snippy')
+-- Tell Neovim that .svelte files use the svelte filetype
+vim.filetype.add({ extension = { svelte = 'svelte' } })
+
+-- Register filetypes for the new parsers
+vim.treesitter.language.register('svelte', 'svelte')
+vim.treesitter.language.register('javascript', 'javascript')
+vim.treesitter.language.register('typescript', 'typescript')
+vim.treesitter.language.register('css', 'css')
+vim.treesitter.language.register('html', 'html')
+-- Enable highlighting for all of them
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'svelte', 'javascript', 'typescript', 'css', 'html' },
+  callback = function(ev)
+    vim.treesitter.start(ev.buf)
+  end,
+})
 
 require('lazy').setup({
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth
@@ -183,7 +198,6 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      vim.print("Nvim-lspconfig")
       --  This function gets run when an LSP attaches to a particular buffer.
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

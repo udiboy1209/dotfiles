@@ -3,3 +3,4 @@ term/nvim.lua : .config/nvim/init.lua
 scripts/dotman : .local/bin/dotman
 term/wezterm.lua : .config/wezterm/wezterm.lua
 term/starship.toml : .config/starship.toml
+term/tmux.conf : .tmux.conf
